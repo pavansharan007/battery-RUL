@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: battery-rul-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT server:app
+    healthCheckPath: /health
+    autoDeploy: true
